@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/bg_light_gradient">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomNav">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- TITLE -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/str_focus_now"
+                android:paddingTop="10dp"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:background="@drawable/bg_header_gradient"
+                android:textColor="@color/color_e0e0e0"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- URGENT EXAM -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_exams_card"
+                android:padding="16dp"
+                android:elevation="6dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/str_urgent_exam"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtExamName"
+                    android:textColor="@color/color_666666"
+                    android:textSize="14sp"
+                    android:text="@string/str_loading"
+                    android:layout_marginTop="6dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtExamDays"
+                    android:textColor="@color/color_666666"
+                    android:textSize="14sp"
+                    android:layout_marginTop="6dp"
+                    android:text=""/>
+            </LinearLayout>
+
+            <!-- PENDING TASKS -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_tasks_card"
+                android:padding="16dp"
+                android:orientation="vertical"
+                android:elevation="6dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/str_pending_tasks_today"
+                    android:textColor="@color/color_444444"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtTasks"
+                    android:textColor="@color/color_666666"
+                    android:textSize="14sp"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/str_loading"/>
+            </LinearLayout>
+
+            <!-- SUGGESTION -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/card_bg"
+                android:padding="16dp"
+                android:elevation="6dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/str_recommended_action"
+                    android:textStyle="bold"
+                    android:textColor="@color/color_444444"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtSuggestion"
+                    android:textColor="@color/color_666666"
+                    android:textSize="14sp"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/str_loading"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    
+</RelativeLayout>

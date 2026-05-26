@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.studyplanner">
+
+    <queries>
+        <package android:name="com.google.android.gms" />
+    </queries>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/logo"
+        android:label="Study Planner"
+        android:roundIcon="@drawable/logo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.StudyPlanner">
+        <activity
+            android:name=".ui.AddExamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.AddTaskActivity"
+            android:exported="false" />
+        <activity
+            android:name=".auth.PasswordSuccessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".auth.NewPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".auth.OtpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".auth.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".auth.SignupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".auth.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".auth.OnboardingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:theme="@style/Theme.App.Starting"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

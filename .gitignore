@@ -32,6 +32,8 @@ local.properties
 *.jks
 *.keystore
 key.properties
+google-services.json
+app/google-services.json
 
 # Operating System temporary files
 .DS_Store

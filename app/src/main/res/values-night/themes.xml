@@ -1,7 +1,53 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Base application theme for Dark Mode. -->
     <style name="Base.Theme.StudyPlanner" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- Brand Colors in Dark Mode -->
+        <item name="colorPrimary">@color/brand_primary</item>
+        <item name="colorOnPrimary">@color/text_on_primary</item>
+        <item name="colorPrimaryContainer">@color/brand_primary_light</item>
+        <item name="colorOnPrimaryContainer">@color/brand_primary_dark</item>
+
+        <item name="colorSecondary">@color/brand_emerald</item>
+        <item name="colorOnSecondary">@color/text_on_primary</item>
+        <item name="colorSecondaryContainer">@color/brand_emerald_light</item>
+        <item name="colorOnSecondaryContainer">@color/brand_emerald_dark</item>
+
+        <!-- Surfaces & Backgrounds -->
+        <item name="colorSurface">@color/surface_card</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="colorSurfaceVariant">@color/surface_subtle</item>
+        <item name="colorOnSurfaceVariant">@color/text_secondary</item>
+        <item name="colorOutline">@color/surface_border</item>
+        <item name="android:windowBackground">@drawable/bg_app_canvas</item>
+
+        <!-- Dark System Bars: Light Icons on Dark Bar -->
+        <item name="android:statusBarColor">@color/canvas_bg</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">@color/surface_card</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
+
+        <!-- Typography & Text Colors -->
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:editTextColor">@color/text_primary</item>
+        <item name="android:textColorHint">@color/text_muted</item>
+    </style>
+
+    <style name="Theme.StudyPlanner" parent="Base.Theme.StudyPlanner" />
+
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/canvas_bg</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+        <item name="postSplashScreenTheme">@style/Theme.StudyPlanner</item>
+    </style>
+
+    <style name="ThemeOverlay.MyDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="android:background">@drawable/bg_card_modern</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.App.Dialog</item>
+    </style>
+
+    <style name="ShapeAppearance.App.Dialog" parent="ShapeAppearance.Material3.Corner.Large">
+        <item name="cornerSize">20dp</item>
     </style>
 </resources>

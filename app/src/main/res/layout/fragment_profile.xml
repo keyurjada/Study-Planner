@@ -1,106 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@drawable/bg_light_gradient">
+    android:background="@android:color/transparent">
 
-    <!-- BOTTOM NAV -->
-    
-
-    <!-- LOGOUT BUTTON -->
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:text="@string/str_logout"
-        android:textStyle="bold"
-        android:textColor="@color/color_fff"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/bg_logout"
-        android:layout_margin="16dp"
-        android:backgroundTint="@color/color_ff4d6d"/>
-
-    <!-- SCROLL CONTENT -->
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/btnLogout">
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingHorizontal="20dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="100dp">
 
-            <!-- PROFILE CARD -->
+            <!-- 👤 HEADER -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Student Profile 👤"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:letterSpacing="-0.01" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Academic dossier, focus streak &amp; statistics"
+                android:textSize="13sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- HERO STUDENT IDENTITY CARD -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_card"
-                android:padding="16dp"
-                android:orientation="horizontal"
+                android:background="@drawable/bg_card_modern"
+                android:elevation="2dp"
+                android:padding="20dp"
                 android:gravity="center_vertical"
-                android:elevation="4dp">
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/imgProfile"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/circle_bg"
-                    android:src="@drawable/logo"/>
+                <FrameLayout
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/brand_primary_light"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/imgProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/logo"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Profile Picture" />
+                </FrameLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:id="@+id/txtName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="@string/str_name"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        android:textColor="@color/color_222"/>
+                        android:textColor="@color/text_primary" />
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:id="@+id/txtEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
                         android:text="@string/str_email"
-                        android:textColor="@color/color_777"/>
-                </LinearLayout>
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
 
+                    <!-- Scholar Rank Chip -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/bg_chip_subject"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="3dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🎓 Level 3 Scholar"
+                            android:textColor="@color/brand_primary"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
-            <!-- HISTORY -->
+            <!-- 🌓 DARK MODE SETTINGS CARD -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_sheet_button"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/surface_subtle"
+                    android:gravity="center"
+                    android:text="🌓"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dark Mode"
+                        android:textColor="@color/text_primary"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Easier on eyes during late night study"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/switchDarkMode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!-- 📋 RECENT ACTIVITY HISTORY -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/str_recent_activity"
+                android:text="Recent Activity 📋"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/color_333"/>
+                android:layout_marginTop="24dp"
+                android:textColor="@color/text_primary" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerHistory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
                 android:layout_marginTop="10dp"/>
 
             <TextView
+                android:id="@+id/txtEmpty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtEmpty"
                 android:text="@string/str_no_history_available"
                 android:gravity="center"
-                android:textColor="@color/color_999"
+                android:textColor="@color/text_muted"
                 android:layout_marginTop="20dp"/>
 
+            <!-- 🚪 LOGOUT BUTTON -->
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/str_logout"
+                android:textStyle="bold"
+                android:textColor="@color/brand_coral"
+                android:background="@drawable/bg_sheet_button"
+                android:backgroundTint="@color/surface_card"
+                app:strokeColor="@color/surface_border"
+                app:strokeWidth="1dp" />
+
         </LinearLayout>
-    </ScrollView>
-</RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

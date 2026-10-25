@@ -1,32 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/examContainer"
-    android:orientation="vertical"
-
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
-    android:padding="12dp"
     android:layout_marginBottom="10dp"
+    android:background="@drawable/bg_sheet_button"
+    android:elevation="1dp"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    android:background="@drawable/bg_sheet_button">
+    <!-- Header Row: Exam Name + Readiness Badge -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/examName"
-        android:text="@string/str_exam_name"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:textColor="@color/color_333"
-        android:layout_width="wrap_content"
-        android:elevation="4dp"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/examName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/str_exam_name"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/examDate"
-        android:text="@string/str_date"
-        android:textColor="@color/color_666"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/txtReadinessBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_badge_high_yield"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:text="🎯 0% Ready"
+            android:textColor="#DC2626"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Details Row: Date & Topic Count -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/examDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_chip_subject"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp"
+            android:text="@string/str_date"
+            android:textColor="@color/text_secondary"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtTopicSummary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="⚡ Attack Plan Active"
+            android:textColor="@color/brand_primary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View Plan →"
+            android:textColor="@color/text_muted"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
 </LinearLayout>

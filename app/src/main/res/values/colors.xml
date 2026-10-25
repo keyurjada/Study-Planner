@@ -1,29 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- ======================================================== -->
+    <!-- FOCUS STUDIO DESIGN SYSTEM TOKENS                        -->
+    <!-- ======================================================== -->
+
+    <!-- Core Brand & Primary (Electric Indigo / Deep Violet) -->
+    <color name="brand_primary">#4F46E5</color>
+    <color name="brand_primary_dark">#4338CA</color>
+    <color name="brand_primary_light">#EEF2FF</color>
+    <color name="brand_primary_glow">#334F46E5</color>
+
+    <!-- Energy & Success (Vibrant Emerald / Mint) -->
+    <color name="brand_emerald">#10B981</color>
+    <color name="brand_emerald_dark">#059669</color>
+    <color name="brand_emerald_light">#ECFDF5</color>
+    <color name="brand_emerald_border">#A7F3D0</color>
+
+    <!-- Urgency & Attention (Warm Amber & Coral Red) -->
+    <color name="brand_amber">#F59E0B</color>
+    <color name="brand_amber_light">#FEF3C7</color>
+    <color name="brand_coral">#EF4444</color>
+    <color name="brand_coral_light">#FEE2E2</color>
+
+    <!-- Surfaces, Cards & Canvas -->
+    <color name="canvas_bg">#F8FAFC</color>
+    <color name="surface_card">#FFFFFF</color>
+    <color name="surface_subtle">#F1F5F9</color>
+    <color name="surface_border">#E2E8F0</color>
+    <color name="surface_border_subtle">#F1F5F9</color>
+
+    <!-- Typography Scale (Modern Slate) -->
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#475569</color>
+    <color name="text_muted">#94A3B8</color>
+    <color name="text_on_primary">#FFFFFF</color>
+
+    <!-- ======================================================== -->
+    <!-- HARMONIZED THEME TOKENS                                  -->
+    <!-- ======================================================== -->
+    <color name="theme_primary">#4F46E5</color>
+    <color name="theme_on_primary">#FFFFFF</color>
+    <color name="theme_secondary">#10B981</color>
+    <color name="theme_on_secondary">#FFFFFF</color>
+    <color name="theme_surface">#FFFFFF</color>
+    <color name="theme_on_surface">#0F172A</color>
+    <color name="theme_window_background">#F8FAFC</color>
+    <color name="theme_text_primary">#0F172A</color>
+    <color name="theme_text_secondary">#64748B</color>
+    <color name="theme_splash_background">#4F46E5</color>
+
+    <!-- ======================================================== -->
+    <!-- BACKWARD-COMPATIBLE LEGACY TOKENS                        -->
+    <!-- ======================================================== -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="teal_700">#16A6A9</color>
-    <color name="color_000">#000</color>
-    <color name="color_333">#333</color>
-    <color name="color_d32f2f">#D32F2F</color>
-    <color name="color_f57c00">#F57C00</color>
-    <color name="color_fff">#FFF</color>
-    <color name="color_666">#666</color>
-    <color name="color_333333">#333333</color>
-    <color name="color_e0e0e0">#E0E0E0</color>
+    <color name="teal_700">#4F46E5</color>
+    <color name="color_000">#0F172A</color>
+    <color name="color_222">#1E293B</color>
+    <color name="color_333">#1E293B</color>
+    <color name="color_333333">#1E293B</color>
+    <color name="color_444444">#334155</color>
+    <color name="color_666">#64748B</color>
+    <color name="color_666666">#64748B</color>
+    <color name="color_777">#64748B</color>
+    <color name="color_999">#94A3B8</color>
+    <color name="color_e0e0e0">#CBD5E1</color>
     <color name="color_ffffff">#FFFFFF</color>
-    <color name="color_3f51b5">#3F51B5</color>
-    <color name="color_00796b">#00796B</color>
-    <color name="color_4caf50">#4CAF50</color>
-    <color name="color_666666">#666666</color>
-    <color name="color_444444">#444444</color>
-    <color name="color_777">#777</color>
-    <color name="color_0fa3a7">#0FA3A7</color>
-    <color name="color_e9f1f2">#E9F1F2</color>
-    <color name="color_ff4d6d">#FF4D6D</color>
-    <color name="color_222">#222</color>
-    <color name="color_999">#999</color>
-    <color name="color_2e7d32">#2E7D32</color>
-    <color name="color_c62828">#C62828</color>
-    <color name="color_667eea">#667EEA</color>
+    <color name="color_fff">#FFFFFF</color>
+    <color name="color_d32f2f">#EF4444</color>
+    <color name="color_c62828">#DC2626</color>
+    <color name="color_f57c00">#F59E0B</color>
+    <color name="color_3f51b5">#4338CA</color>
+    <color name="color_00796b">#0D9488</color>
+    <color name="color_4caf50">#10B981</color>
+    <color name="color_2e7d32">#059669</color>
+    <color name="color_0fa3a7">#4F46E5</color>
+    <color name="color_e9f1f2">#EEF2FF</color>
+    <color name="color_ff4d6d">#F43F5E</color>
+    <color name="color_667eea">#4F46E5</color>
 </resources>

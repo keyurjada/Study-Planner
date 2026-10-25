@@ -13,38 +13,56 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.studyplanner.R;
 import com.example.studyplanner.models.HistoryModel;
 
+import java.util.ArrayList;
 import java.util.List;
+
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
-    Context context;
-    List<HistoryModel> list;
+    private final Context context;
+    private List<HistoryModel> list;
+
     public HistoryAdapter(Context context, List<HistoryModel> list) {
         this.context = context;
-        this.list = list;
+        this.list = list != null ? list : new ArrayList<>();
     }
-    public void setList(List<HistoryModel> list){
-        this.list = list;
+
+    public void setList(List<HistoryModel> list) {
+        this.list = list != null ? list : new ArrayList<>();
         notifyDataSetChanged();
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_history, parent, false);
         return new ViewHolder(view);
     }
+
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder h, int i) {
-        HistoryModel m = list.get(i);
-        h.txtDate.setText(m.date);
-        h.txtSubjects.setText("Subjects: " + TextUtils.join(", ", m.subjects));
-        h.txtCompleted.setText("Completed: " + m.completedCount);
-        h.txtPending.setText("Pending: " + m.pendingCount);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        HistoryModel model = list.get(position);
+        if (model == null) return;
+
+        holder.txtDate.setText(model.date != null ? model.date : "");
+
+        if (model.subjects != null && !model.subjects.isEmpty()) {
+            holder.txtSubjects.setVisibility(View.VISIBLE);
+            holder.txtSubjects.setText("Subjects: " + TextUtils.join(", ", model.subjects));
+        } else {
+            holder.txtSubjects.setVisibility(View.GONE);
+        }
+
+        holder.txtCompleted.setText("Completed: " + model.completedCount);
+        holder.txtPending.setText("Pending: " + model.pendingCount);
     }
+
     @Override
     public int getItemCount() {
-        return list.size();
+        return list == null ? 0 : list.size();
     }
-    class ViewHolder extends RecyclerView.ViewHolder {
+
+    static class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtDate, txtSubjects, txtCompleted, txtPending;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtDate = itemView.findViewById(R.id.txtDate);

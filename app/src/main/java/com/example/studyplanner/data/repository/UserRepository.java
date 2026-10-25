@@ -13,8 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public class UserRepository {
-    private FirebaseFirestore db;
-    private String userId;
+    private final FirebaseFirestore db;
 
     public interface UserCallback {
         void onUserLoaded(String name, String email);
@@ -26,25 +25,40 @@ public class UserRepository {
 
     public UserRepository() {
         db = FirebaseFirestore.getInstance();
+    }
+
+    private String getUserId() {
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            return FirebaseAuth.getInstance().getCurrentUser().getUid();
         }
+        return null;
     }
 
     public ListenerRegistration getUserData(UserCallback callback) {
-        if (userId == null) return null;
+        String userId = getUserId();
+        if (userId == null) {
+            if (callback != null) callback.onUserLoaded(null, null);
+            return null;
+        }
         return db.collection("users").document(userId)
                 .addSnapshotListener((document, error) -> {
-                    if (document != null && document.exists()) {
+                    if (error != null || document == null) return;
+                    if (document.exists()) {
                         String name = document.getString("name");
                         String email = document.getString("email");
-                        callback.onUserLoaded(name, email);
+                        if (callback != null) {
+                            callback.onUserLoaded(name, email);
+                        }
                     }
                 });
     }
     
     public ListenerRegistration getHistory(HistoryCallback callback) {
-        if (userId == null) return null;
+        String userId = getUserId();
+        if (userId == null) {
+            if (callback != null) callback.onHistoryLoaded(new ArrayList<>());
+            return null;
+        }
         return db.collection("users")
                 .document(userId)
                 .collection("tasks")
@@ -60,19 +74,29 @@ public class UserRepository {
                             map.put(date, new HistoryModel(date));
                         }
                         HistoryModel m = map.get(date);
-                        m.subjects.add(subject);
-                        if (completed) {
-                            m.completedCount++;
-                        } else {
-                            m.pendingCount++;
+                        if (m != null) {
+                            if (subject != null && !subject.trim().isEmpty()) {
+                                m.subjects.add(subject.trim());
+                            }
+                            if (completed) {
+                                m.completedCount++;
+                            } else {
+                                m.pendingCount++;
+                            }
                         }
                     }
                     List<HistoryModel> result = new ArrayList<>(map.values());
-                    Collections.sort(result, (a, b) -> b.date.compareTo(a.date));
+                    Collections.sort(result, (a, b) -> {
+                        if (a.date == null) return 1;
+                        if (b.date == null) return -1;
+                        return b.date.compareTo(a.date);
+                    });
                     if (result.size() > 4) {
-                        result = result.subList(0, 4);
+                        result = new ArrayList<>(result.subList(0, 4));
                     }
-                    callback.onHistoryLoaded(result);
+                    if (callback != null) {
+                        callback.onHistoryLoaded(result);
+                    }
                 });
     }
 }

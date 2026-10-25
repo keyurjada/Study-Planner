@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TaskRepository {
-    private FirebaseFirestore db;
-    private String userId;
+    private final FirebaseFirestore db;
 
     public interface TaskCallback {
         void onTasksLoaded(List<TaskModel> tasks);
@@ -23,13 +22,21 @@ public class TaskRepository {
 
     public TaskRepository() {
         db = FirebaseFirestore.getInstance();
+    }
+
+    private String getUserId() {
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            return FirebaseAuth.getInstance().getCurrentUser().getUid();
         }
+        return null;
     }
 
     public ListenerRegistration getTasksForDate(String date, boolean pendingOnly, TaskCallback callback) {
-        if (userId == null) return null;
+        String userId = getUserId();
+        if (userId == null) {
+            if (callback != null) callback.onTasksLoaded(new ArrayList<>());
+            return null;
+        }
         
         com.google.firebase.firestore.Query query = db.collection("users")
                 .document(userId)
@@ -50,12 +57,18 @@ public class TaskRepository {
                     taskList.add(task);
                 }
             }
-            callback.onTasksLoaded(taskList);
+            if (callback != null) {
+                callback.onTasksLoaded(taskList);
+            }
         });
     }
     
     public ListenerRegistration getProgressForDate(String date, ProgressCallback callback) {
-        if (userId == null) return null;
+        String userId = getUserId();
+        if (userId == null) {
+            if (callback != null) callback.onProgressLoaded(0, 0);
+            return null;
+        }
         
         return db.collection("users")
                 .document(userId)
@@ -71,9 +84,9 @@ public class TaskRepository {
                             completed++;
                         }
                     }
-                    callback.onProgressLoaded(completed, total);
+                    if (callback != null) {
+                        callback.onProgressLoaded(completed, total);
+                    }
                 });
     }
-    
-    // For saving, updating, etc. (we can add as needed)
 }

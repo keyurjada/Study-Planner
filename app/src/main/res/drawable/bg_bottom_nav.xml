@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <solid android:color="#F0F4FF"/> <!-- light bluish -->
-
-    <corners
-        android:topLeftRadius="20dp"
-        android:topRightRadius="20dp"/>
-</shape>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Top divider border line -->
+    <item>
+        <shape>
+            <solid android:color="@color/surface_border"/>
+            <corners
+                android:topLeftRadius="24dp"
+                android:topRightRadius="24dp"/>
+        </shape>
+    </item>
+    <!-- Solid white bottom navigation bar -->
+    <item android:top="1dp">
+        <shape>
+            <solid android:color="@color/surface_card"/>
+            <corners
+                android:topLeftRadius="24dp"
+                android:topRightRadius="24dp"/>
+        </shape>
+    </item>
+</layer-list>

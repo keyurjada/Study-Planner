@@ -24,8 +24,12 @@
     <string name="str_pending_tasks_today">Pending Tasks Today</string>
     <string name="str_recommended_action">Recommended Action</string>
     <string name="str_forgot_your_password">Forgot Your Password? 🔑</string>
-    <string name="str_enter_your_registere">Enter your registered email address and we will send you a code to reset your password.</string>
-    <string name="str_send_otp_code">Send OTP Code</string>
+    <string name="str_enter_your_registere">Enter your registered email address and we will send you a secure link to reset your password.</string>
+    <string name="str_send_otp_code">Send Reset Link</string>
+    <string name="str_send_reset_link">Send Reset Link</string>
+    <string name="str_reset_link_sent">Reset Link Sent! ✉️</string>
+    <string name="str_reset_link_instructions">We\'ve sent a password reset link to your email. Click the link in your email to choose a new password, then return here to sign in.</string>
+    <string name="str_back_to_login">Back to Sign In</string>
     <string name="str_welcome_back">Welcome Back! 👋</string>
     <string name="str_access_your_personal">Access your personalized study plans and continue learning.</string>
     <string name="str_remember_me">Remember me</string>
@@ -63,4 +67,5 @@
     <string name="str_good_morning">Good Morning</string>
     <string name="str_good_afternoon">Good Afternoon</string>
     <string name="str_no_tasks_today">No tasks today</string>
+    <string name="str_please_wait">Please wait...</string>
 </resources>

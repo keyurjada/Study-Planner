@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ======================================================== -->
+    <!-- FOCUS STUDIO DESIGN SYSTEM TOKENS (DARK MODE)             -->
+    <!-- ======================================================== -->
+
+    <!-- Core Brand & Primary (Lighter Electric Indigo for dark contrast) -->
+    <color name="brand_primary">#818CF8</color>
+    <color name="brand_primary_dark">#A5B4FC</color>
+    <color name="brand_primary_light">#1E1B4B</color>
+    <color name="brand_primary_glow">#40818CF8</color>
+
+    <!-- Energy & Success (Vibrant Mint) -->
+    <color name="brand_emerald">#34D399</color>
+    <color name="brand_emerald_dark">#6EE7B7</color>
+    <color name="brand_emerald_light">#064E3B</color>
+    <color name="brand_emerald_border">#047857</color>
+
+    <!-- Urgency & Attention (Warm Amber & Coral Red) -->
+    <color name="brand_amber">#FBBF24</color>
+    <color name="brand_amber_light">#451A03</color>
+    <color name="brand_coral">#F87171</color>
+    <color name="brand_coral_light">#450A0A</color>
+
+    <!-- Surfaces, Cards & Canvas for Dark Mode -->
+    <color name="canvas_bg">#0B0F19</color>
+    <color name="surface_card">#151E2E</color>
+    <color name="surface_subtle">#1E293B</color>
+    <color name="surface_border">#26354A</color>
+    <color name="surface_border_subtle">#1E293B</color>
+
+    <!-- Typography Scale (High Contrast Light Slate on Dark) -->
+    <color name="text_primary">#F8FAFC</color>
+    <color name="text_secondary">#94A3B8</color>
+    <color name="text_muted">#64748B</color>
+    <color name="text_on_primary">#0F172A</color>
+
+    <!-- ======================================================== -->
+    <!-- HARMONIZED THEME TOKENS FOR DARK MODE                    -->
+    <!-- ======================================================== -->
+    <color name="theme_primary">#818CF8</color>
+    <color name="theme_on_primary">#0F172A</color>
+    <color name="theme_secondary">#34D399</color>
+    <color name="theme_on_secondary">#0F172A</color>
+    <color name="theme_surface">#151E2E</color>
+    <color name="theme_on_surface">#F8FAFC</color>
+    <color name="theme_window_background">#0B0F19</color>
+    <color name="theme_text_primary">#F8FAFC</color>
+    <color name="theme_text_secondary">#94A3B8</color>
+    <color name="theme_splash_background">#0B0F19</color>
+
+    <!-- ======================================================== -->
+    <!-- BACKWARD-COMPATIBLE LEGACY TOKENS                        -->
+    <!-- ======================================================== -->
+    <color name="black">#FFFFFFFF</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="teal_700">#818CF8</color>
+    <color name="color_000">#F8FAFC</color>
+    <color name="color_222">#F1F5F9</color>
+    <color name="color_333">#E2E8F0</color>
+    <color name="color_333333">#E2E8F0</color>
+    <color name="color_444444">#94A3B8</color>
+    <color name="color_666">#94A3B8</color>
+    <color name="color_666666">#94A3B8</color>
+    <color name="color_777">#94A3B8</color>
+    <color name="color_999">#64748B</color>
+    <color name="color_e0e0e0">#334155</color>
+    <color name="color_ffffff">#F8FAFC</color>
+    <color name="color_fff">#FFFFFF</color>
+    <color name="color_d32f2f">#F87171</color>
+    <color name="color_c62828">#EF4444</color>
+    <color name="color_f57c00">#FBBF24</color>
+    <color name="color_3f51b5">#818CF8</color>
+    <color name="color_00796b">#2DD4BF</color>
+    <color name="color_4caf50">#34D399</color>
+    <color name="color_2e7d32">#6EE7B7</color>
+    <color name="color_0fa3a7">#818CF8</color>
+    <color name="color_e9f1f2">#1E1B4B</color>
+    <color name="color_ff4d6d">#FB7185</color>
+    <color name="color_667eea">#818CF8</color>
+</resources>

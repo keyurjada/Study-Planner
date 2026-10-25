@@ -2,7 +2,10 @@ package com.example.studyplanner.auth;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,10 +22,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
-    EditText email, password;
-    Button loginBtn;
-    FirebaseAuth auth;
-    Dialog loader;
+    private EditText email, password;
+    private Button loginBtn;
+    private FirebaseAuth auth;
+    private Dialog loader;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,41 +37,71 @@ public class LoginActivity extends AppCompatActivity {
         password = binding.loginPassword;
         loginBtn = binding.btnLogin;
         auth = FirebaseAuth.getInstance();
+
         loader = new Dialog(this);
+        loader.requestWindowFeature(Window.FEATURE_NO_TITLE);
         loader.setContentView(R.layout.dialog_loader);
+        if (loader.getWindow() != null) {
+            loader.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
         loader.setCancelable(false);
+
         ImageView back = binding.btnBack;
         back.setOnClickListener(v -> finish());
+
         loginBtn.setOnClickListener(v -> loginUser());
+
         TextView forgotPassword = binding.forgotPassword;
         forgotPassword.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
             startActivity(intent);
         });
     }
+
     private void loginUser() {
         String userEmail = email.getText().toString().trim();
         String userPassword = password.getText().toString().trim();
-        if(userEmail.isEmpty()){
+
+        if (userEmail.isEmpty()) {
             email.setError("Enter email");
+            email.requestFocus();
             return;
         }
-        if(userPassword.isEmpty()){
+        if (userPassword.isEmpty()) {
             password.setError("Enter password");
+            password.requestFocus();
             return;
         }
-        loader.show();
-        auth.signInWithEmailAndPassword(userEmail,userPassword).addOnCompleteListener(task -> {
-                    loader.dismiss();
-                    if(task.isSuccessful()){
-                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                            if(user != null){
-                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                                finish();
-                            }
-                    }else{
-                        Toast.makeText(this, "Invalid email or password", Toast.LENGTH_LONG).show();
-                    }
-                });
+
+        if (!isFinishing() && !isDestroyed()) {
+            loader.show();
+        }
+
+        auth.signInWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(task -> {
+            if (!isFinishing() && !isDestroyed() && loader.isShowing()) {
+                loader.dismiss();
+            }
+
+            if (task.isSuccessful()) {
+                FirebaseUser user = auth.getCurrentUser();
+                if (user != null) {
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+            } else {
+                String errorMsg = task.getException() != null ? task.getException().getLocalizedMessage() : "Invalid email or password";
+                Toast.makeText(LoginActivity.this, errorMsg, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (loader != null && loader.isShowing()) {
+            loader.dismiss();
+        }
     }
 }

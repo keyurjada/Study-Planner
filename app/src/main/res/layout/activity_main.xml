@@ -4,45 +4,54 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_app_canvas"
     android:fitsSystemWindows="true">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+    <!-- Swipeable ViewPager2 Container -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerMain"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_graph"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomNav"/>
-
-    <!-- Common FAB -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_input_add"
-        app:backgroundTint="@color/color_4caf50"
-        app:tint="@android:color/white"
-        app:layout_constraintTop_toTopOf="@id/bottomNav"
         app:layout_constraintBottom_toTopOf="@id/bottomNav"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-
-    <!-- Common FAB for the main screen if needed, or can be moved to Dashboard Fragment. We will move it to DashboardFragment to keep things clean -->
-
+    <!-- Modern Elevated Bottom Navigation Bar -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="76dp"
         android:background="@drawable/bg_bottom_nav"
-        android:elevation="10dp"
+        android:elevation="12dp"
+        app:backgroundTint="@null"
         app:itemIconTint="@color/bottom_nav_color"
         app:itemTextColor="@color/bottom_nav_color"
+        app:itemRippleColor="@color/brand_primary_glow"
+        app:itemActiveIndicatorStyle="@style/Widget.Material3.BottomNavigationView.ActiveIndicator"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Central Study Sprint & Attack Plan Quick Launch FAB -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="Launch New Study Sprint or Exam Attack Plan"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="@color/brand_primary"
+        app:tint="@color/white"
+        app:elevation="8dp"
+        app:hoveredFocusedTranslationZ="10dp"
+        app:pressedTranslationZ="12dp"
+        app:borderWidth="0dp"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+        app:layout_constraintTop_toTopOf="@id/bottomNav"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

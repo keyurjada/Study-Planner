@@ -1,36 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-
-    android:padding="8dp"
-    android:layout_marginBottom="6dp"
-
+    android:layout_marginBottom="10dp"
     android:background="@drawable/bg_sheet_button"
-    android:gravity="center_vertical">
+    android:elevation="1dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="14dp">
 
-    <!-- Checkbox -->
+    <!-- Mission Completion Checkbox -->
     <CheckBox
         android:id="@+id/checkTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleX="1.0"
-        android:scaleY="1.0"
-        android:buttonTint="@color/color_667eea"/>
+        android:buttonTint="@color/brand_primary"
+        android:scaleX="1.1"
+        android:scaleY="1.1" />
 
-    <!-- Task Name -->
-    <TextView
-        android:id="@+id/taskName"
+    <!-- Details Column -->
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_weight="1"
+        android:orientation="vertical">
 
-        android:text="@string/str_task_name"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:textColor="@color/color_333"
-        android:layout_marginStart="8dp"/>
+        <!-- Task Title -->
+        <TextView
+            android:id="@+id/taskName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_task_name"
+            android:textColor="@color/text_primary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <!-- Subtitle Tags Row -->
+        <LinearLayout
+            android:id="@+id/layoutTags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtTaskSubject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_chip_subject"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="3dp"
+                android:text="Operating Systems"
+                android:textColor="@color/text_secondary"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtTaskDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/bg_badge_duration"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="3dp"
+                android:text="⚡ 25m"
+                android:textColor="@color/brand_primary"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtTaskEnergy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/bg_chip_subject"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="3dp"
+                android:text="🧠 Deep"
+                android:textColor="@color/text_secondary"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- 2-Min Kickstart Snippet Box -->
+        <TextView
+            android:id="@+id/txtTaskKickstart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_kickstart_box"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:text="🎯 First: ..."
+            android:textColor="@color/brand_emerald_dark"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- Play Sprint Launch Button -->
+    <ImageView
+        android:id="@+id/btnPlaySprint"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/bg_circle"
+        android:backgroundTint="@color/brand_primary"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="9dp"
+        android:src="@android:drawable/ic_media_play"
+        app:tint="@color/white" />
+
 </LinearLayout>

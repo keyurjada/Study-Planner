@@ -2,8 +2,6 @@ package com.example.studyplanner.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +9,6 @@ import com.example.studyplanner.databinding.ActivityPasswordSuccessBinding;
 
 public class PasswordSuccessActivity extends AppCompatActivity {
     private ActivityPasswordSuccessBinding binding;
-    Button goHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,13 +16,14 @@ public class PasswordSuccessActivity extends AppCompatActivity {
         binding = ActivityPasswordSuccessBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        goHome = binding.goHomeBtn;
-        goHome.setOnClickListener(v -> {
-            Toast.makeText(this, "Password has be changed", Toast.LENGTH_LONG).show();
+        String email = getIntent().getStringExtra("email");
+        if (email != null && !email.trim().isEmpty()) {
+            binding.txtDescription.setText("We've sent a password reset link to " + email.trim() + ".\n\nClick the link in your email to choose a new password, then return here to sign in.");
+        }
+
+        binding.goHomeBtn.setOnClickListener(v -> {
             Intent intent = new Intent(PasswordSuccessActivity.this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
             finish();
         });

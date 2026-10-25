@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Top divider border line in Dark Mode -->
+    <item>
+        <shape>
+            <solid android:color="@color/surface_border"/>
+            <corners
+                android:topLeftRadius="24dp"
+                android:topRightRadius="24dp"/>
+        </shape>
+    </item>
+    <!-- Solid dark bottom navigation bar -->
+    <item android:top="1dp">
+        <shape>
+            <solid android:color="@color/surface_card"/>
+            <corners
+                android:topLeftRadius="24dp"
+                android:topRightRadius="24dp"/>
+        </shape>
+    </item>
+</layer-list>

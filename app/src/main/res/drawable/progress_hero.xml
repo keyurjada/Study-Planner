@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Translucent White Track on Indigo Hero Card -->
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="50dp"/>
+            <solid android:color="#33FFFFFF"/>
+        </shape>
+    </item>
+
+    <!-- Vibrant Emerald Completion Progress Fill -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <corners android:radius="50dp"/>
+                <gradient
+                    android:startColor="#34D399"
+                    android:endColor="#10B981"
+                    android:angle="0"/>
+            </shape>
+        </clip>
+    </item>
+</layer-list>

@@ -12,9 +12,12 @@
         android:layout_height="40dp"/>
 
     <TextView
+        android:id="@+id/txtLoaderMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/str_signing_up"
+        android:text="@string/str_please_wait"
+        android:textColor="@color/color_333"
+        android:textSize="14sp"
         android:layout_marginTop="10dp"/>
 
 </LinearLayout>

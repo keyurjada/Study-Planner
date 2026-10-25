@@ -46,7 +46,6 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore:24.9.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("com.google.firebase:firebase-database:20.3.0")
-    implementation("com.google.android.material:material:1.11.0")
     implementation("com.google.firebase:firebase-storage:20.3.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")

@@ -1,116 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/bg_app_canvas">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
-
-        <!-- Back Button -->
+        android:paddingHorizontal="24dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="32dp">
 
         <ImageView
             android:id="@+id/backBtn"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_back"/>
-
-        <!-- Title -->
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_back"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="@color/surface_card"
+            android:elevation="2dp"
+            android:padding="10dp"
+            app:tint="@color/text_primary"
+            android:contentDescription="Back"
+            android:layout_marginBottom="16dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/str_enter_otp_code"
-            android:textSize="22sp"
+            android:textSize="26sp"
             android:textStyle="bold"
-            android:layout_marginTop="12dp"/>
+            android:textColor="@color/text_primary"
+            android:letterSpacing="-0.02"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/str_we_ve_sent_a_one_tim"
-            android:textColor="@color/color_777"
-            android:layout_marginTop="6dp"/>
-
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="36dp"/>
 
         <!-- OTP BOXES -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/otp1"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
+                android:layout_width="56dp"
+                android:layout_height="60dp"
                 android:background="@drawable/otp_box_selector"
                 android:gravity="center"
                 android:inputType="number"
-                android:textSize="20sp"
+                android:textColor="@color/text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold"
                 android:maxLength="1"/>
 
             <EditText
                 android:id="@+id/otp2"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="12dp"
+                android:layout_width="56dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="14dp"
                 android:background="@drawable/otp_box_selector"
                 android:gravity="center"
                 android:inputType="number"
-                android:textSize="20sp"
+                android:textColor="@color/text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold"
                 android:maxLength="1"/>
 
             <EditText
                 android:id="@+id/otp3"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="12dp"
+                android:layout_width="56dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="14dp"
                 android:background="@drawable/otp_box_selector"
                 android:gravity="center"
                 android:inputType="number"
-                android:textSize="20sp"
+                android:textColor="@color/text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold"
                 android:maxLength="1"/>
 
             <EditText
                 android:id="@+id/otp4"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="12dp"
+                android:layout_width="56dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="14dp"
                 android:background="@drawable/otp_box_selector"
                 android:gravity="center"
                 android:inputType="number"
-                android:textSize="20sp"
+                android:textColor="@color/text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold"
                 android:maxLength="1"/>
-
         </LinearLayout>
 
-
         <!-- RESEND TEXT -->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/str_you_can_resend_the_c"
-            android:textColor="@color/color_777"
-            android:layout_marginTop="24dp"
-            android:layout_gravity="center"/>
-
         <TextView
             android:id="@+id/resendCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/str_resend_code"
-            android:textColor="@color/teal_700"
-            android:layout_marginTop="6dp"
+            android:textColor="@color/brand_primary"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_marginTop="32dp"
             android:layout_gravity="center"/>
 
     </LinearLayout>
-
 </ScrollView>

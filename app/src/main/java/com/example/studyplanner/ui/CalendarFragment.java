@@ -5,14 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.CalendarView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.studyplanner.R;
 import com.example.studyplanner.adapters.ExamAdapter;
@@ -31,21 +28,13 @@ import java.util.List;
 import java.util.Locale;
 
 public class CalendarFragment extends Fragment {
-
     private FragmentCalendarBinding binding;
-    private CalendarView calendarView;
-    private TextView txtSelectedDate;
-    private RecyclerView recyclerTasks;
-    private RecyclerView recyclerExams;
-
     private List<TaskModel> taskList;
     private List<ExamModel> examList;
     private TaskCalendarAdapter taskAdapter;
     private ExamAdapter examAdapter;
-
     private TaskRepository taskRepository;
     private ExamRepository examRepository;
-
     private String selectedDate;
     private ListenerRegistration taskListener;
     private ListenerRegistration examListener;
@@ -56,11 +45,6 @@ public class CalendarFragment extends Fragment {
         binding = FragmentCalendarBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        calendarView = binding.calendarView;
-        txtSelectedDate = binding.txtSelectedDate;
-        recyclerTasks = binding.recyclerTasks;
-        recyclerExams = binding.recyclerExams;
-
         taskRepository = new TaskRepository();
         examRepository = new ExamRepository();
 
@@ -69,27 +53,29 @@ public class CalendarFragment extends Fragment {
         taskAdapter = new TaskCalendarAdapter(taskList);
         examAdapter = new ExamAdapter(examList);
 
-        recyclerTasks.setLayoutManager(new LinearLayoutManager(requireContext()));
-        recyclerTasks.setAdapter(taskAdapter);
-        recyclerTasks.setLayoutAnimation(
+        binding.recyclerTasks.setLayoutManager(new LinearLayoutManager(requireContext()));
+        binding.recyclerTasks.setAdapter(taskAdapter);
+        binding.recyclerTasks.setLayoutAnimation(
                 AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_animation_fall_down)
         );
 
-        recyclerExams.setLayoutManager(new LinearLayoutManager(requireContext()));
-        recyclerExams.setAdapter(examAdapter);
+        binding.recyclerExams.setLayoutManager(new LinearLayoutManager(requireContext()));
+        binding.recyclerExams.setAdapter(examAdapter);
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         selectedDate = sdf.format(new Date());
-        txtSelectedDate.setText("📍 " + selectedDate);
+        binding.txtSelectedDate.setText("📍 " + selectedDate);
 
         loadTasks(selectedDate);
         loadExams(selectedDate);
 
-        calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
+        binding.calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
             selectedDate = String.format(Locale.getDefault(), "%04d-%02d-%02d", year, month + 1, dayOfMonth);
-            txtSelectedDate.setAlpha(0f);
-            txtSelectedDate.setText("📍 " + selectedDate);
-            txtSelectedDate.animate().alpha(1f).setDuration(300);
+            if (binding != null) {
+                binding.txtSelectedDate.setAlpha(0f);
+                binding.txtSelectedDate.setText("📍 " + selectedDate);
+                binding.txtSelectedDate.animate().alpha(1f).setDuration(300);
+            }
             loadTasks(selectedDate);
             loadExams(selectedDate);
         });
@@ -100,18 +86,20 @@ public class CalendarFragment extends Fragment {
     private void loadTasks(String date) {
         if (taskListener != null) {
             taskListener.remove();
+            taskListener = null;
         }
         taskListener = taskRepository.getTasksForDate(date, false, tasks -> {
+            if (!isAdded() || binding == null) return;
             taskList.clear();
             if (tasks != null) {
                 taskList.addAll(tasks);
             }
             taskAdapter.notifyDataSetChanged();
-            recyclerTasks.scheduleLayoutAnimation();
+            binding.recyclerTasks.scheduleLayoutAnimation();
             if (taskList.isEmpty()) {
-                txtSelectedDate.setText("📍 " + date + " - No tasks 🎉");
+                binding.txtSelectedDate.setText("📍 " + date + " - No tasks 🎉");
             } else {
-                txtSelectedDate.setText("📍 " + date);
+                binding.txtSelectedDate.setText("📍 " + date);
             }
         });
     }
@@ -119,26 +107,30 @@ public class CalendarFragment extends Fragment {
     private void loadExams(String date) {
         if (examListener != null) {
             examListener.remove();
+            examListener = null;
         }
         examListener = examRepository.getExamsForDate(date, false, exams -> {
+            if (!isAdded() || binding == null) return;
             examList.clear();
             if (exams != null) {
                 examList.addAll(exams);
             }
             examAdapter.notifyDataSetChanged();
-            recyclerExams.scheduleLayoutAnimation();
+            binding.recyclerExams.scheduleLayoutAnimation();
         });
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binding = null;
         if (taskListener != null) {
             taskListener.remove();
+            taskListener = null;
         }
         if (examListener != null) {
             examListener.remove();
+            examListener = null;
         }
+        binding = null;
     }
 }

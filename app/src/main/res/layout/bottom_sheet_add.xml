@@ -1,69 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="20dp"
+    android:paddingHorizontal="20dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="28dp"
     android:background="@drawable/bg_bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <!-- Bottom Sheet Drag Handle Bar -->
+    <View
+        android:layout_width="44dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_circle"
+        android:backgroundTint="@color/surface_border" />
+
+    <!-- Sheet Header -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/str_create"
+        android:text="Launch Study Mission 🚀"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:textColor="@color/color_3f51b5"
-        android:letterSpacing="0.03"
-        android:layout_marginBottom="16dp"/>
+        android:textColor="@color/text_primary" />
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Select what you would like to prepare right now"
+        android:textColor="@color/text_secondary"
+        android:textSize="13sp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="18dp" />
+
+    <!-- Option 1: Study Sprint & Task (btnTask) -->
+    <LinearLayout
         android:id="@+id/btnTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="14dp"
+        android:padding="16dp"
         android:background="@drawable/bg_sheet_button"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:gravity="center"
+            android:text="🚀"
+            android:textSize="22sp"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="@color/brand_primary_light" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Study Sprint &amp; Mission"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Anti-procrastination • 2-min kickstart • XP"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"/>
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/str_empty"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/str_add_task"
-            android:textColor="@color/color_333"
-            android:textStyle="bold"
-            android:layout_marginStart="12dp"
-            android:textSize="16sp"/>
+            android:text="→"
+            android:textColor="@color/brand_primary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
+    <!-- Option 2: Exam Attack Plan (btnExam) -->
     <LinearLayout
+        android:id="@+id/btnExam"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnExam"
+        android:layout_marginTop="12dp"
         android:orientation="horizontal"
-        android:padding="14dp"
+        android:padding="16dp"
         android:background="@drawable/bg_sheet_button"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:gravity="center"
+            android:text="⚡"
+            android:textSize="22sp"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="@color/brand_amber_light" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Exam Attack Plan"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Reverse syllabus • High-yield traps &amp; radar"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"/>
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/str_empty_1"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/str_add_exam"
-            android:textColor="@color/color_333"
-            android:textStyle="bold"
-            android:layout_marginStart="12dp"
-            android:textSize="16sp"/>
+            android:text="→"
+            android:textColor="@color/brand_amber"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>

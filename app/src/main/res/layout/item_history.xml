@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/bg_card"
-    android:padding="12dp"
+    android:background="@drawable/bg_sheet_button"
+    android:padding="14dp"
     android:layout_marginBottom="10dp"
+    android:elevation="1dp"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -10,25 +11,48 @@
     <TextView
         android:id="@+id/txtDate"
         android:textStyle="bold"
-        android:textSize="16sp"
+        android:textSize="15sp"
+        android:textColor="@color/text_primary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/txtSubjects"
+        android:textSize="12sp"
+        android:textColor="@color/brand_primary"
+        android:layout_marginTop="4dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/txtCompleted"
-        android:textColor="@color/color_2e7d32"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/txtPending"
-        android:textColor="@color/color_c62828"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/txtCompleted"
+            android:textColor="@color/brand_emerald_dark"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:background="@drawable/bg_kickstart_box"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/txtPending"
+            android:textColor="@color/brand_coral"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_badge_high_yield"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
 </LinearLayout>

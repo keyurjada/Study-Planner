@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="14dp"
+    android:padding="16dp"
+    android:background="@drawable/bg_card_modern"
+    android:elevation="3dp">
+
+    <!-- Header: Weight Badge + Topic Title -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/txtTopicWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔥 High-Yield 80/20"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:textColor="#DC2626"
+            android:background="@drawable/bg_badge_high_yield"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:layout_marginEnd="8dp"/>
+
+        <TextView
+            android:id="@+id/txtTopicIndex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#1"
+            android:textSize="12sp"
+            android:textColor="#9CA3AF"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtTopicTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Process Synchronization &amp; Critical Sections"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/color_333"
+        android:lineSpacingExtra="2dp"
+        android:layout_marginBottom="10dp"/>
+
+    <!-- ⚠️ Deadly Exam Trap Box -->
+    <LinearLayout
+        android:id="@+id/boxTrap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_trap_box"
+        android:padding="12dp"
+        android:layout_marginBottom="14dp">
+
+        <TextView
+            android:id="@+id/txtTrapContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⚠️ Exam Trap: Busy-waiting wastes CPU cycles; semaphores use sleep/wakeup. Peterson's algorithm fails on modern multi-core CPUs without memory barriers."
+            android:textSize="13sp"
+            android:textColor="#D97706"
+            android:lineSpacingExtra="2dp"/>
+    </LinearLayout>
+
+    <!-- Confidence Selector Section -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Confidence Level:"
+        android:textSize="12sp"
+        android:textColor="@color/color_666"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <!-- 🚨 Need Review -->
+        <TextView
+            android:id="@+id/btnConfidenceWeak"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:gravity="center"
+            android:text="🚨 Weak"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/color_666"
+            android:background="@drawable/bg_confidence_pill_unselected"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <!-- 🟡 Shaky -->
+        <TextView
+            android:id="@+id/btnConfidenceShaky"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="4dp"
+            android:gravity="center"
+            android:text="🟡 Shaky"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/color_666"
+            android:background="@drawable/bg_confidence_pill_unselected"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <!-- 🟢 Mastered -->
+        <TextView
+            android:id="@+id/btnConfidenceMastered"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:gravity="center"
+            android:text="🟢 Mastered"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/color_666"
+            android:background="@drawable/bg_confidence_pill_unselected"
+            android:clickable="true"
+            android:focusable="true"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -4,13 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:background="@drawable/bg_light_gradient">
+    android:background="@android:color/transparent"
+    android:fitsSystemWindows="true">
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:fillViewport="true"
+        android:overScrollMode="never"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,67 +21,129 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingHorizontal="20dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="100dp">
 
-            <!-- HEADER -->
+            <!-- 👤 HERO GREETING & PROFILE TOP BAR -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:padding="20dp"
-                android:background="@drawable/bg_header_gradient">
+                android:gravity="center_vertical">
 
                 <LinearLayout
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/txtGreeting"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/str_good_evening"
-                        android:textSize="16sp"
-                        android:textColor="@color/color_e0e0e0"/>
+                        android:textSize="14sp"
+                        android:textColor="@color/text_secondary"
+                        android:fontFamily="sans-serif-medium" />
 
                     <TextView
                         android:id="@+id/txtName"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/str_keyur"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:textColor="@color/color_ffffff"/>
+                        android:textColor="@color/text_primary"
+                        android:letterSpacing="-0.01" />
+
+                    <!-- Quick Mode Badge -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center_vertical"
+                        android:background="@drawable/bg_chip_subject"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="3dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="⚡ Daily Focus Active"
+                            android:textColor="@color/brand_primary"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
                 </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/imgProfileDashboard"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:background="@drawable/logo"
-                    android:scaleType="centerCrop"/>
+                <!-- Profile Avatar Frame with Soft Ring -->
+                <FrameLayout
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/brand_primary_light"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/imgProfileDashboard"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/logo"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Profile Picture" />
+                </FrameLayout>
             </LinearLayout>
 
-            <!-- PROGRESS CARD -->
+            <!-- 🎯 HERO MOMENTUM & PROGRESS CARD -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_card"
+                android:background="@drawable/bg_card_hero"
                 android:padding="20dp"
                 android:orientation="vertical"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:elevation="6dp">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/str_today_s_progress"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="10dp"/>
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TODAY'S MOMENTUM"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:letterSpacing="0.06"
+                        android:textColor="#E0E7FF"/>
+
+                    <!-- Completion Percentage Badge -->
+                    <TextView
+                        android:id="@+id/txtCompletion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/str_0"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+
+                <!-- Progress Count Status -->
+                <TextView
+                    android:id="@+id/txtProgress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/str_0_0_tasks"
+                    android:textSize="14sp"
+                    android:textColor="#C7D2FE"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Rounded Progress Bar Track & Fill -->
                 <ProgressBar
                     android:id="@+id/progressBar"
                     style="?android:attr/progressBarStyleHorizontal"
@@ -89,86 +152,117 @@
                     android:max="100"
                     android:progress="0"
                     android:indeterminate="false"
-                    android:progressDrawable="@drawable/progress_anim"/>
+                    android:progressDrawable="@drawable/progress_hero"/>
 
-                <TextView
-                    android:id="@+id/txtProgress"
-                    android:layout_width="match_parent"
+                <!-- Micro Motivational Footer -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/str_0_0_tasks"
-                    android:textSize="14sp"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="14dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/txtCompletion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/str_0"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="4dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🎯"
+                        android:textSize="13sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="Crush today's missions to build your study streak!"
+                        android:textSize="11sp"
+                        android:textColor="#E0E7FF"
+                        android:fontFamily="sans-serif-medium"/>
+                </LinearLayout>
+
             </LinearLayout>
 
-            <!-- TASKS -->
+            <!-- 🚀 TODAY'S MISSIONS / TASKS SECTION -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_tasks_card"
-                android:elevation="6dp"
-                android:padding="16dp"
                 android:orientation="vertical"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="24dp">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/str_today_s_tasks"
-                    android:textColor="@color/color_3f51b5"
-                    android:textStyle="bold"
-                    android:textSize="17sp"
-                    android:letterSpacing="0.02"/>
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Today\'s Missions"
+                        android:textColor="@color/text_primary"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:letterSpacing="-0.01"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ACTIVE SPRINT"
+                        android:textColor="@color/brand_primary"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.04"/>
+                </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerTasks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layoutAnimation="@anim/layout_animation_fall_down"
-                    android:layout_marginTop="10dp"/>
+                    android:layoutAnimation="@anim/layout_animation_fall_down"/>
             </LinearLayout>
 
-            <!-- EXAMS -->
+            <!-- ⚡ UPCOMING EXAMS & ATTACK PLANS SECTION -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_exams_card"
-                android:elevation="6dp"
-                android:padding="16dp"
                 android:orientation="vertical"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="24dp">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/str_upcoming_exams"
-                    android:textColor="@color/color_00796b"
-                    android:textSize="17sp"
-                    android:letterSpacing="0.02"
-                    android:textStyle="bold"/>
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Exam Attack Radar"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp"
+                        android:letterSpacing="-0.01"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="READINESS"
+                        android:textColor="@color/brand_amber"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.04"/>
+                </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerExams"
-                    android:paddingTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
 
-            </LinearLayout>
+        </LinearLayout>
 
-        </androidx.core.widget.NestedScrollView>
-
-    
-
-    
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

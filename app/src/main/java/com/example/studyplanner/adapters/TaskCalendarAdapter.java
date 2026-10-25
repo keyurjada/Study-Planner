@@ -2,7 +2,6 @@ package com.example.studyplanner.adapters;
 
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +14,14 @@ import com.example.studyplanner.R;
 import com.example.studyplanner.models.TaskModel;
 
 import java.util.List;
+
 public class TaskCalendarAdapter extends RecyclerView.Adapter<TaskCalendarAdapter.ViewHolder> {
-    List<TaskModel> list;
+    private final List<TaskModel> list;
+
     public TaskCalendarAdapter(List<TaskModel> list) {
         this.list = list;
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,29 +33,33 @@ public class TaskCalendarAdapter extends RecyclerView.Adapter<TaskCalendarAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         TaskModel task = list.get(position);
-        holder.taskName.setText(task.getName());
-        holder.taskName.setPaintFlags(
-                holder.taskName.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG)
-        );
-        holder.taskName.setAlpha(1f);
+        if (task == null) return;
+
+        holder.taskName.setText(task.getName() != null ? task.getName() : "Task");
+
         if (task.isCompleted()) {
-            holder.taskName.setTextColor(Color.parseColor("#4CAF50"));
+            holder.taskName.setTextColor(androidx.core.content.ContextCompat.getColor(holder.itemView.getContext(), R.color.text_muted));
             holder.taskName.setPaintFlags(
                     holder.taskName.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG
             );
             holder.taskName.setAlpha(0.6f);
         } else {
-            holder.taskName.setTextColor(Color.parseColor("#FFA500"));
+            holder.taskName.setTextColor(androidx.core.content.ContextCompat.getColor(holder.itemView.getContext(), R.color.text_primary));
+            holder.taskName.setPaintFlags(
+                    holder.taskName.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG
+            );
+            holder.taskName.setAlpha(1f);
         }
-        Log.d("TASK_DEBUG", task.getName() + " -> " + task.isCompleted());
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return list == null ? 0 : list.size();
     }
+
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView taskName;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             taskName = itemView.findViewById(R.id.taskName);

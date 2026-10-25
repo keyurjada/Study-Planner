@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExamRepository {
-    private FirebaseFirestore db;
-    private String userId;
+    private final FirebaseFirestore db;
 
     public interface ExamCallback {
         void onExamsLoaded(List<ExamModel> exams);
@@ -19,13 +18,21 @@ public class ExamRepository {
 
     public ExamRepository() {
         db = FirebaseFirestore.getInstance();
+    }
+
+    private String getUserId() {
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            return FirebaseAuth.getInstance().getCurrentUser().getUid();
         }
+        return null;
     }
 
     public ListenerRegistration getExamsForDate(String date, boolean greaterThanOrEqual, ExamCallback callback) {
-        if (userId == null) return null;
+        String userId = getUserId();
+        if (userId == null) {
+            if (callback != null) callback.onExamsLoaded(new ArrayList<>());
+            return null;
+        }
         
         com.google.firebase.firestore.Query query = db.collection("users")
                 .document(userId)
@@ -43,10 +50,13 @@ public class ExamRepository {
             for (DocumentSnapshot doc : value) {
                 ExamModel exam = doc.toObject(ExamModel.class);
                 if (exam != null) {
+                    exam.setId(doc.getId());
                     examList.add(exam);
                 }
             }
-            callback.onExamsLoaded(examList);
+            if (callback != null) {
+                callback.onExamsLoaded(examList);
+            }
         });
     }
 }

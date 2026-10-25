@@ -1,15 +1,39 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
+# Built application & build artifacts
+*.apk
+*.aab
+*.ap_
+*.dex
+build/
 /build
-/captures
+/*/build
+captures/
 .externalNativeBuild
 .cxx
+
+# Gradle cache & temp files
+.gradle/
+
+# Local machine SDK configuration (CRITICAL: Path is unique to your PC)
 local.properties
+/local.properties
+
+# Android Studio & IntelliJ IDEA user-specific configs
+*.iml
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/shelf/
+.idea/appInsightsSettings.xml
+
+# Signing Keys & Credentials (CRITICAL: Never commit private keys)
+*.jks
+*.keystore
+key.properties
+
+# Operating System temporary files
+.DS_Store
+Thumbs.db
+desktop.ini

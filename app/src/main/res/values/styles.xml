@@ -2,14 +2,25 @@
 <resources>
 
     <style name="AppTextView" parent="Widget.AppCompat.TextView">
-        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:fontFamily">sans-serif</item>
     </style>
 
     <style name="AppButton" parent="Widget.MaterialComponents.Button">
         <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="cornerRadius">14dp</item>
     </style>
 
     <style name="AppTypography" parent="TextAppearance.Material3.BodyLarge">
-        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:fontFamily">sans-serif</item>
     </style>
+
+    <!-- Elevated Bottom Sheet Dialog Style -->
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
 </resources>

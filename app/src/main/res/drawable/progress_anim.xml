@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <!-- Background -->
+    <!-- Track Background -->
     <item android:id="@android:id/background">
         <shape>
             <corners android:radius="50dp"/>
-            <solid android:color="#E6ECFF"/>
+            <solid android:color="@color/surface_border"/>
         </shape>
     </item>
 
-    <!-- Progress -->
+    <!-- Fill Gradient: Indigo to Emerald -->
     <item android:id="@android:id/progress">
         <clip>
             <shape>
                 <corners android:radius="50dp"/>
                 <gradient
-                    android:startColor="#667EEA"
-                    android:endColor="#764BA2"
+                    android:startColor="@color/brand_primary"
+                    android:endColor="@color/brand_emerald"
                     android:angle="0"/>
             </shape>
         </clip>
     </item>
-
 </layer-list>
